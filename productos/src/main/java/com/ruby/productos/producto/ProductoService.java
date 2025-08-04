@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ruby.productos.clienteDTO.ClienteDTO;
+import com.ruby.productos.clienteDTO.ClienteFeingApi;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -13,6 +16,7 @@ public class ProductoService {
 
        
     private final ProductoRepository productoRepository;
+    private final ClienteFeingApi clienteFeingApi;
 
     public List<Producto> findAll() {
         return productoRepository.findAll();
@@ -28,5 +32,10 @@ public class ProductoService {
 
      public void delete(Long id){
             productoRepository.deleteById(id);
+    }
+
+    //Comunicar con el servicio Cliente
+    public ClienteDTO obtenerClientePorId(Long id){
+        return clienteFeingApi.buscarClientePorId(id);
     }
 }

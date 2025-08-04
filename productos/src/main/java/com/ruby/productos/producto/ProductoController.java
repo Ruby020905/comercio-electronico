@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ruby.productos.clienteDTO.ClienteDTO;
+
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -39,6 +41,12 @@ public class ProductoController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){
         productoService.delete(id);
+    }
+
+    //Cominicar con cliente
+    @GetMapping("/cliente/{id}")
+    public ClienteDTO obtenerClientePorId(@PathVariable("id") Long id){
+        return productoService.obtenerClientePorId(id);
     }
 
 
