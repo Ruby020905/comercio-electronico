@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ruby.pedidos.productoDTO.ProductoDto;
+
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -17,7 +19,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PedidosController {
 
-    private PedidosService pedidosService;
+    private final PedidosService pedidosService;
 
     @GetMapping
     public List<Pedidos> getAllPedidoss(){
@@ -38,5 +40,11 @@ public class PedidosController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){
         pedidosService.delete(id);
+    }
+
+    //Comunicar con el servicio a producto
+    @GetMapping("/producto/{id}")
+    public ProductoDto obtenerProdctoPorId(@PathVariable("id") Long id){
+        return pedidosService.obtenerProductoPorId(id);
     }
 }

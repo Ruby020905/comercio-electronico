@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ruby.clientes.pedidoDTO.PedidoDTO;
+import com.ruby.clientes.pedidoDTO.PedidoFeingApi;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -12,6 +15,7 @@ public class ClienteService {
 
        
     private final ClienteRepository clienteRepository;
+    private final PedidoFeingApi pedidoFeingApi;
 
     public List<Cliente> findAll() {
         return clienteRepository.findAll();
@@ -28,4 +32,9 @@ public class ClienteService {
      public void delete(Long id){
             clienteRepository.deleteById(id);
         }
+
+    //comunicR CON PEDIDOS
+    public PedidoDTO obtenerPedidoPorId(Long id){
+        return pedidoFeingApi.buscarPedidoPorId(id);
+    }
 }
