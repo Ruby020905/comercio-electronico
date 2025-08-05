@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ruby.clientes.pedidoDTO.PedidoDTO;
 
-import lombok.AllArgsConstructor;
+
 
 @RestController
 @RequestMapping("/clientes")
-@AllArgsConstructor
 public class ClienteController {
 
      private final ClienteService clienteService;
@@ -50,5 +49,6 @@ public class ClienteController {
     public PedidoDTO obtenerPedidoPorId(@PathVariable("id") Long id){
         return clienteService.obtenerPedidoPorId(id);
     }
-    
+
+
 }
